@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AdoptionApplication;
+use App\Models\User;
 
 class Animal extends Model
 {
@@ -25,5 +27,10 @@ class Animal extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'registered_by');
+    }
+
+    public function adoptionApplications()
+    {
+        return $this->hasMany(AdoptionApplication::class, 'animal_id', 'animal_id');
     }
 }

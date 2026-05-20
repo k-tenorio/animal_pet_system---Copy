@@ -27,7 +27,9 @@
             text-align: center;
         }
 
-        .sidebar-menu { flex: 1; }
+        .sidebar-menu {
+            flex: 1;
+        }
 
         .sidebar a {
             display: block;
@@ -40,7 +42,9 @@
         }
 
         .sidebar a:hover,
-        .sidebar a.active { background: #2f6b4d; }
+        .sidebar a.active {
+            background: #2f6b4d;
+        }
 
         .dropdown-btn {
             width: 100%;
@@ -55,9 +59,14 @@
             font-size: 16px;
         }
 
-        .dropdown-btn:hover { background: #2f6b4d; }
+        .dropdown-btn:hover {
+            background: #2f6b4d;
+        }
 
-        .dropdown-content { display: none; margin-left: 15px; }
+        .dropdown-content {
+            display: none;
+            margin-left: 15px;
+        }
 
         .dropdown-content a {
             font-size: 14px;
@@ -65,10 +74,17 @@
             background: #2a5c43;
         }
 
-        .dropdown-content a:hover { background: #3b7a59; }
-        .dropdown-content.show { display: block; }
+        .dropdown-content a:hover {
+            background: #3b7a59;
+        }
 
-        .logout-form { margin-top: auto; }
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .logout-form {
+            margin-top: auto;
+        }
 
         .logout-btn {
             background: #c0392b;
@@ -83,7 +99,9 @@
             transition: 0.2s;
         }
 
-        .logout-btn:hover { background: #e74c3c; }
+        .logout-btn:hover {
+            background: #e74c3c;
+        }
 
         /* ── Content ── */
         .content {
@@ -102,7 +120,7 @@
             padding: 25px;
             border-radius: 12px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* ── Filter grid ── */
@@ -156,7 +174,8 @@
         }
 
         /* ── Buttons ── */
-        input, select {
+        input,
+        select {
             padding: 10px;
             margin: 5px;
             border: 1px solid #ccc;
@@ -217,7 +236,8 @@
             background: white;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             border-bottom: 1px solid #ddd;
             text-align: left;
@@ -230,7 +250,9 @@
             white-space: nowrap;
         }
 
-        td { font-size: 14px; }
+        td {
+            font-size: 14px;
+        }
 
         /* Status badge */
         .badge {
@@ -241,11 +263,24 @@
             font-weight: 600;
         }
 
-        .badge-available  { background: #d4f5dd; color: #1a6b35; }
-        .badge-adopted    { background: #d0e8ff; color: #1a4b8c; }
-        .badge-pending    { background: #fff3cd; color: #7d5a00; }
+        .badge-available {
+            background: #d4f5dd;
+            color: #1a6b35;
+        }
 
-        .pagination-container { margin-top: 20px; }
+        .badge-adopted {
+            background: #d0e8ff;
+            color: #1a4b8c;
+        }
+
+        .badge-pending {
+            background: #fff3cd;
+            color: #7d5a00;
+        }
+
+        .pagination-container {
+            margin-top: 20px;
+        }
     </style>
 
     <div class="dashboard">
@@ -284,9 +319,9 @@
             <h1>Manage Animals</h1>
 
             @if(session('success'))
-                <p style="color:green; background:#d4f5dd; padding:10px; border-radius:5px;">
-                    {{ session('success') }}
-                </p>
+            <p style="color:green; background:#d4f5dd; padding:10px; border-radius:5px;">
+                {{ session('success') }}
+            </p>
             @endif
 
             <!-- ── FILTER CARD ── -->
@@ -301,9 +336,9 @@
                         <div class="filter-group filter-search-row">
                             <label>Search</label>
                             <input type="text"
-                                   name="search"
-                                   placeholder="Search name, breed…"
-                                   value="{{ request('search') }}">
+                                name="search"
+                                placeholder="Search name, breed…"
+                                value="{{ request('search') }}">
                         </div>
 
                         <!-- Species -->
@@ -311,8 +346,8 @@
                             <label>Species</label>
                             <select name="species">
                                 <option value="">All Species</option>
-                                <option value="Dog"  {{ request('species') == 'Dog'  ? 'selected' : '' }}>Dog</option>
-                                <option value="Cat"  {{ request('species') == 'Cat'  ? 'selected' : '' }}>Cat</option>
+                                <option value="Dog" {{ request('species') == 'Dog'  ? 'selected' : '' }}>Dog</option>
+                                <option value="Cat" {{ request('species') == 'Cat'  ? 'selected' : '' }}>Cat</option>
                             </select>
                         </div>
 
@@ -321,7 +356,7 @@
                             <label>Gender</label>
                             <select name="gender">
                                 <option value="">All Genders</option>
-                                <option value="Male"   {{ request('gender') == 'Male'   ? 'selected' : '' }}>Male</option>
+                                <option value="Male" {{ request('gender') == 'Male'   ? 'selected' : '' }}>Male</option>
                                 <option value="Female" {{ request('gender') == 'Female' ? 'selected' : '' }}>Female</option>
                             </select>
                         </div>
@@ -332,8 +367,8 @@
                             <select name="status">
                                 <option value="">All Statuses</option>
                                 <option value="Available" {{ request('status') == 'Available' ? 'selected' : '' }}>Available</option>
-                                <option value="Adopted"   {{ request('status') == 'Adopted'   ? 'selected' : '' }}>Adopted</option>
-                                <option value="Pending"   {{ request('status') == 'Pending'   ? 'selected' : '' }}>Pending</option>
+                                <option value="Adopted" {{ request('status') == 'Adopted'   ? 'selected' : '' }}>Adopted</option>
+                                <option value="Pending" {{ request('status') == 'Pending'   ? 'selected' : '' }}>Pending</option>
                             </select>
                         </div>
 
@@ -343,8 +378,8 @@
                             <select name="age_group">
                                 <option value="">All Ages</option>
                                 <option value="Puppy/Kitten" {{ request('age_group') == 'Puppy/Kitten' ? 'selected' : '' }}>Puppy / Kitten</option>
-                                <option value="Adult"        {{ request('age_group') == 'Adult'        ? 'selected' : '' }}>Adult</option>
-                                <option value="Senior"       {{ request('age_group') == 'Senior'       ? 'selected' : '' }}>Senior</option>
+                                <option value="Adult" {{ request('age_group') == 'Adult'        ? 'selected' : '' }}>Adult</option>
+                                <option value="Senior" {{ request('age_group') == 'Senior'       ? 'selected' : '' }}>Senior</option>
                             </select>
                         </div>
 
@@ -352,16 +387,16 @@
                         <div class="filter-group">
                             <label>Date Added (From)</label>
                             <input type="date"
-                                   name="date_from"
-                                   value="{{ request('date_from') }}">
+                                name="date_from"
+                                value="{{ request('date_from') }}">
                         </div>
 
                         <!-- Date Added (to) -->
                         <div class="filter-group">
                             <label>Date Added (To)</label>
                             <input type="date"
-                                   name="date_to"
-                                   value="{{ request('date_to') }}">
+                                name="date_to"
+                                value="{{ request('date_to') }}">
                         </div>
 
                         <!-- Sort By -->
@@ -369,20 +404,20 @@
                             <label>Sort By</label>
                             <select name="sort">
                                 <option value="">Sort by…</option>
-                                <option value="name_asc"    {{ request('sort') == 'name_asc'    ? 'selected' : '' }}>Name (A–Z)</option>
-                                <option value="name_desc"   {{ request('sort') == 'name_desc'   ? 'selected' : '' }}>Name (Z–A)</option>
-                                <option value="newest"      {{ request('sort') == 'newest'      ? 'selected' : '' }}>Newest First</option>
-                                <option value="oldest"      {{ request('sort') == 'oldest'      ? 'selected' : '' }}>Oldest First</option>
-                                <option value="age_asc"     {{ request('sort') == 'age_asc'     ? 'selected' : '' }}>Age (Low → High)</option>
-                                <option value="age_desc"    {{ request('sort') == 'age_desc'    ? 'selected' : '' }}>Age (High → Low)</option>
-                                <option value="weight_asc"  {{ request('sort') == 'weight_asc'  ? 'selected' : '' }}>Weight (Low → High)</option>
+                                <option value="name_asc" {{ request('sort') == 'name_asc'    ? 'selected' : '' }}>Name (A–Z)</option>
+                                <option value="name_desc" {{ request('sort') == 'name_desc'   ? 'selected' : '' }}>Name (Z–A)</option>
+                                <option value="newest" {{ request('sort') == 'newest'      ? 'selected' : '' }}>Newest First</option>
+                                <option value="oldest" {{ request('sort') == 'oldest'      ? 'selected' : '' }}>Oldest First</option>
+                                <option value="age_asc" {{ request('sort') == 'age_asc'     ? 'selected' : '' }}>Age (Low → High)</option>
+                                <option value="age_desc" {{ request('sort') == 'age_desc'    ? 'selected' : '' }}>Age (High → Low)</option>
+                                <option value="weight_asc" {{ request('sort') == 'weight_asc'  ? 'selected' : '' }}>Weight (Low → High)</option>
                                 <option value="weight_desc" {{ request('sort') == 'weight_desc' ? 'selected' : '' }}>Weight (High → Low)</option>
-                                <option value="height_asc"  {{ request('sort') == 'height_asc'  ? 'selected' : '' }}>Height (Low → High)</option>
+                                <option value="height_asc" {{ request('sort') == 'height_asc'  ? 'selected' : '' }}>Height (Low → High)</option>
                                 <option value="height_desc" {{ request('sort') == 'height_desc' ? 'selected' : '' }}>Height (High → Low)</option>
                             </select>
                         </div>
 
-                    </div><!-- /.filter-grid -->
+                    </div><
 
                     <div class="filter-actions">
                         <button type="submit" class="add-btn">Apply Filters</button>
@@ -390,7 +425,7 @@
                     </div>
 
                 </form>
-            </div><!-- /.card (filters) -->
+            </div>
 
             <!-- ── ANIMAL LIST CARD ── -->
             <div class="card">
@@ -418,11 +453,11 @@
                             <tr>
                                 <td>
                                     @if($animal->image)
-                                        <img src="{{ asset('storage/' . $animal->image) }}"
-                                             width="55" height="55"
-                                             style="border-radius:8px; object-fit:cover;">
+                                    <img src="{{ asset('storage/' . $animal->image) }}"
+                                        width="55" height="55"
+                                        style="border-radius:8px; object-fit:cover;">
                                     @else
-                                        <span style="color:#aaa; font-size:12px;">No Image</span>
+                                    <span style="color:#aaa; font-size:12px;">No Image</span>
                                     @endif
                                 </td>
                                 <td><strong>{{ $animal->name }}</strong></td>
@@ -434,12 +469,12 @@
                                 <td>{{ $animal->height ? $animal->height . ' cm' : '—' }}</td>
                                 <td>
                                     @php
-                                        $badgeClass = match(strtolower($animal->status ?? '')) {
-                                            'available' => 'badge-available',
-                                            'adopted'   => 'badge-adopted',
-                                            'pending'   => 'badge-pending',
-                                            default     => '',
-                                        };
+                                    $badgeClass = match(strtolower($animal->status ?? '')) {
+                                    'available' => 'badge-available',
+                                    'adopted' => 'badge-adopted',
+                                    'pending' => 'badge-pending',
+                                    default => '',
+                                    };
                                     @endphp
                                     <span class="badge {{ $badgeClass }}">{{ $animal->status }}</span>
                                 </td>
@@ -452,9 +487,9 @@
                                     <a href="{{ route('admin.animal.edit', $animal->animal_id) }}" class="edit-btn">Edit</a>
 
                                     <form method="POST"
-                                          action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
-                                          style="display:inline;"
-                                          onsubmit="return confirm('Are you sure you want to delete this animal?')">
+                                        action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
+                                        style="display:inline;"
+                                        onsubmit="return confirm('Are you sure you want to delete this animal?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="delete-btn">Delete</button>

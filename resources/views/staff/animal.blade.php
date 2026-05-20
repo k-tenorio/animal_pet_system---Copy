@@ -3,7 +3,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #eef5ef;
+            background: #f1f6f2;
         }
 
         .dashboard {
@@ -12,18 +12,20 @@
         }
 
         .sidebar {
-            width: 260px;
-            background: linear-gradient(180deg, #1f4d36, #163827);
+            width: 270px;
+            background: #173b2a;
             color: white;
-            padding: 28px 22px;
+            padding: 30px 22px;
             display: flex;
             flex-direction: column;
+            box-shadow: 8px 0 25px rgba(0, 0, 0, 0.08);
         }
 
         .sidebar h2 {
             text-align: center;
-            font-size: 26px;
-            margin-bottom: 35px;
+            font-size: 27px;
+            margin-bottom: 40px;
+            letter-spacing: .5px;
         }
 
         .sidebar-menu {
@@ -32,17 +34,35 @@
 
         .sidebar a {
             display: block;
-            color: white;
+            color: #eaf6ee;
             text-decoration: none;
-            padding: 14px 16px;
+            padding: 15px 18px;
             margin-bottom: 12px;
-            border-radius: 10px;
+            border-radius: 14px;
             font-weight: bold;
+            transition: 0.2s;
         }
 
         .sidebar a:hover,
         .sidebar a.active {
             background: #3b7a57;
+            transform: translateX(4px);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .logo-container img {
+            width: 92px;
+            height: 92px;
+            object-fit: cover;
+            border-radius: 28px;
+            background: white;
+            padding: 6px;
+            border: 4px solid rgba(255, 255, 255, 0.18);
         }
 
         .logout-form {
@@ -52,54 +72,76 @@
         .logout-btn {
             width: 100%;
             border: none;
-            background: #c0392b;
+            background: #b8322a;
             color: white;
-            padding: 13px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 14px;
             cursor: pointer;
             font-weight: bold;
         }
 
+        .logout-btn:hover {
+            background: #92261f;
+        }
+
         .content {
             flex: 1;
-            padding: 35px;
+            padding: 40px;
+        }
+
+        .message {
+            background: #dff7e7;
+            color: #1f4d36;
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
         .page-header {
-            margin-bottom: 25px;
+            background: white;
+            padding: 28px 32px;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            margin-bottom: 28px;
+            border-left: 8px solid #1f4d36;
         }
 
         .page-header h1 {
             color: #1f4d36;
-            font-size: 32px;
-            margin-bottom: 5px;
+            font-size: 34px;
+            margin: 0 0 8px;
         }
 
         .page-header p {
-            color: #667;
+            color: #667085;
+            margin: 0;
+            font-size: 15px;
         }
 
         .card {
             background: white;
             padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
         }
 
         .form-title {
             color: #1f4d36;
-            margin-bottom: 5px;
+            margin: 0 0 6px;
+            font-size: 24px;
         }
 
         .form-subtitle {
-            color: #777;
-            margin-bottom: 25px;
+            color: #667085;
+            margin: 0 0 25px;
+            font-size: 14px;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 18px;
         }
 
         .form-group {
@@ -114,30 +156,32 @@
         label {
             font-weight: bold;
             color: #1f4d36;
-            margin-bottom: 7px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
         input,
         select,
         textarea {
-            padding: 13px;
-            border: 1px solid #c9d8ce;
-            border-radius: 10px;
-            font-size: 15px;
+            padding: 14px 15px;
+            border: 1px solid #d0d5dd;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #344054;
             outline: none;
-            background: #fafafa;
+            background: #fbfdfb;
         }
 
         input:focus,
         select:focus,
         textarea:focus {
-            border-color: #1f4d36;
+            border-color: #3b7a57;
             background: white;
-            box-shadow: 0 0 0 3px rgba(31, 77, 54, 0.12);
+            box-shadow: 0 0 0 3px rgba(59, 122, 87, 0.12);
         }
 
         textarea {
-            resize: none;
+            resize: vertical;
             min-height: 120px;
         }
 
@@ -152,14 +196,18 @@
         .add-btn {
             border: none;
             padding: 13px 22px;
-            border-radius: 10px;
+            border-radius: 14px;
             cursor: pointer;
             font-weight: bold;
         }
 
         .cancel-btn {
-            background: #e0e0e0;
-            color: #333;
+            background: #edf1ee;
+            color: #344054;
+        }
+
+        .cancel-btn:hover {
+            background: #dfe8e2;
         }
 
         .add-btn {
@@ -174,57 +222,84 @@
         .table-card {
             margin-top: 30px;
             background: white;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            overflow-x: auto;
+            padding: 0;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
         }
 
         .table-title {
             color: #1f4d36;
-            margin-bottom: 20px;
+            margin: 0;
+            padding: 24px 28px;
+            font-size: 23px;
+            border-bottom: 1px solid #e7eee9;
+            background: #fbfdfb;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 950px;
         }
 
         table th {
-            background: #1f4d36;
-            color: white;
-            padding: 14px;
+            background: #f5faf6;
+            color: #1f4d36;
+            padding: 16px 18px;
             text-align: left;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            border-bottom: 1px solid #edf1ee;
         }
 
         table td {
-            padding: 14px;
-            border-bottom: 1px solid #e5e5e5;
+            padding: 16px 18px;
+            border-bottom: 1px solid #edf1ee;
+            color: #344054;
+            vertical-align: middle;
         }
 
-        table tr:hover {
-            background: #f7faf7;
+        table tr:hover td {
+            background: #f9fcfa;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .animal-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid #e5e7eb;
         }
 
         .status {
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 8px 15px;
+            border-radius: 999px;
             font-size: 13px;
             font-weight: bold;
             display: inline-block;
+            text-transform: capitalize;
         }
 
         .status.available {
-            background: #d4f5dd;
-            color: #1e7a3e;
+            background: #dff7e7;
+            color: #1f4d36;
         }
 
         .status.adopted {
-            background: #ffe0e0;
-            color: #c0392b;
+            background: #fde2e1;
+            color: #7f1d1d;
         }
-
-
 
         @media (max-width: 768px) {
             .dashboard {
@@ -235,6 +310,14 @@
                 width: auto;
             }
 
+            .content {
+                padding: 22px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
             .form-grid {
                 grid-template-columns: 1fr;
             }
@@ -242,18 +325,33 @@
             .form-group.full {
                 grid-column: span 1;
             }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .cancel-btn,
+            .add-btn {
+                width: 100%;
+            }
         }
     </style>
 
     <div class="dashboard">
 
         <div class="sidebar">
+
+            <div class="logo-container">
+                <img src="{{ asset('images/Pawmily_Home_Logo.png') }}" alt="PawMily Logo">
+            </div>
+
             <h2>PawMily Home</h2>
 
             <div class="sidebar-menu">
-                <a href="{{ route('staff.animal') }}" class="active">Animal Management</a>
-                <a href="#">Adoption Applications</a>
+                <a href="{{ route('staff.animal') }}" class="active">Register Pet</a>
+                <a href="{{ route('staff.adoption-application') }}">Adoption Applications</a>
                 <a href="#">Kapon Appointments</a>
+                <a href="{{ route('staff.adoption-approved') }}">Reviewed Applications</a>
             </div>
 
             <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -264,22 +362,15 @@
 
         <div class="content">
 
-                @if(session('success'))
-                <div style="
-                    background: #d4f5dd;
-                    color: #1e7a3e;
-                    padding: 15px;
-                    border-radius: 10px;
-                    margin-bottom: 20px;
-                    font-weight: bold;
-                ">
-                    {{ session('success') }}
-                </div>
+            @if(session('success'))
+            <div class="message">
+                {{ session('success') }}
+            </div>
             @endif
 
             <div class="page-header">
-                <h1>Animal Management</h1>
-                <p>Add and manage pets available for adoption.</p>
+                <h1>Add Animal</h1>
+                <p>Add an animal available for adoption.</p>
             </div>
 
             <div class="card">
@@ -354,52 +445,51 @@
             <div class="table-card">
                 <h2 class="table-title">Animal List</h2>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Species</th>
-                            <th>Gender</th>
-                            <th>Breed</th>
-                            <th>Age</th>
-                            <th>Height</th>
-                            <th>Weight</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>Gender</th>
+                                <th>Breed</th>
+                                <th>Age</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
+                            @foreach($animals as $animal)
+                            <tr>
+                                <td>
+                                    @if($animal->image)
+                                    <img src="{{ asset('storage/' . $animal->image) }}" class="animal-img" alt="{{ $animal->name }}">
+                                    @else
+                                    <span style="color:#98a2b3; font-weight:bold;">No image</span>
+                                    @endif
+                                </td>
 
-                        @foreach($animals as $animal)
-                        <tr>
-                            <td>
-                                <img src="{{ asset('storage/' . $animal->image) }}"
-                                    width="70"
-                                    height="70"
-                                    style="border-radius:10px; object-fit:cover;">
-                            </td>
+                                <td>{{ $animal->name }}</td>
+                                <td>{{ $animal->species }}</td>
+                                <td>{{ $animal->gender }}</td>
+                                <td>{{ $animal->breed }}</td>
+                                <td>{{ $animal->age }}</td>
+                                <td>{{ $animal->height }} cm</td>
+                                <td>{{ $animal->weight }} kg</td>
 
-                            <td>{{ $animal->name }}</td>
-                            <td>{{ $animal->species }}</td>
-                            <td>{{ $animal->gender }}</td>
-                            <td>{{ $animal->breed }}</td>
-                            <td>{{ $animal->age }}</td>
-                            <td>{{ $animal->height }} cm</td>
-                            <td>{{ $animal->weight }} kg</td>
-
-                            <td>
-                                <span class="status {{ strtolower($animal->status) }}">
-                                    {{ $animal->status }}
-                                </span>
-                            </td>
-
-                            </td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
+                                <td>
+                                    <span class="status {{ strtolower($animal->status) }}">
+                                        {{ $animal->status }}
+                                    </span>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

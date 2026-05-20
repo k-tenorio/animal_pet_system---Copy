@@ -8,6 +8,28 @@ use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
+    public function create()
+    {
+        $donations = Donation::where('user_id', Auth::id())->latest()->get();
+
+        return view('user.donation', compact('donations'));
+    }
+
+    public function cancel(Donation $donation)
+    {
+        if ($donation->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if (! in_array($donation->status, ['Approved', 'Pending'])) {
+            return redirect()->back()->with('error', 'This donation cannot be cancelled.');
+        }
+
+        $donation->delete();
+
+        return redirect()->back()->with('success', 'Donation cancelled successfully.');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -25,9 +47,9 @@ class DonationController extends Controller
             'donor_contact_number' => $request->donor_contact_number,
             'amount' => $request->amount,
             'payment_method' => $request->payment_method,
-            'status' => 'Pending',
+            'status' => 'Approved',
         ]);
 
-        return redirect()->to('/#donation')->with('success', 'Thank you for your donation!');
+        return redirect()->back()->with('success', 'Thank you for your donation!');
     }
 }

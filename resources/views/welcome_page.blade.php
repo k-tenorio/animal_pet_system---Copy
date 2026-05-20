@@ -16,7 +16,7 @@
         <div class="logo">
             <img src="{{ asset('images/PawMily_Home_Logo.png') }}" alt="PawMily Home Logo">
             <div class="logo-text">
-                <h2>PawMily Home</h1>
+                <h2>PawMily Home</h2>
                     <p>Where Every Paw Finds a Family</p>
             </div>
         </div>
@@ -28,8 +28,8 @@
             <li><a href="#donation">Donate</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <div>
-                <a href="/login" class="login-btn">Log In</a>
-                <a href="/register" class="register-btn">Register</a>
+                <a href="{{ route('login') }}" class="login-btn">Log In</a>
+                <a href="{{ route('register') }}" class="register-btn">Register</a>
             </div>
 
         </ul>
@@ -63,13 +63,13 @@
             <h3>ABOUT US</h3>
             <h2>Dedicated to Finding Every Paw a Family 🐾</h2>
             <p>
-                At PawMily Home, we believe that every animal deserves a second chance. 
-                Our mission is to rescue, rehabilitate, and rehome pets in need, connecting them 
+                At PawMily Home, we believe that every animal deserves a second chance.
+                Our mission is to rescue, rehabilitate, and rehome pets in need, connecting them
                 with loving families who will cherish them forever.
             </p>
             <p>
-                Whether you're looking to adopt a new best friend, make a donation, or just spread 
-                the word, you can make a huge impact. Together, we can create a world where no 
+                Whether you're looking to adopt a new best friend, make a donation, or just spread
+                the word, you can make a huge impact. Together, we can create a world where no
                 pet is left behind.
             </p>
         </div>
@@ -87,32 +87,34 @@
         </div>
 
         <div class="pet-container">
+            @foreach($animals as $animal)
             <div class="pet-card">
-                <span class="tag">Puppy</span>
-                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1000&auto=format&fit=crop">
-                <div class="pet-info">
-                    <h3>Bruno</h3>
-                    <p>Male • 6 months • Mixed Breed</p>
-                </div>
-            </div>
 
-            <div class="pet-card">
-                <span class="tag">Kitten</span>
-                <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?q=80&w=1000&auto=format&fit=crop">
-                <div class="pet-info">
-                    <h3>Luna</h3>
-                    <p>Female • 4 months • Tabby</p>
-                </div>
-            </div>
+                <div class="pet-image-box">
+                    @if($animal->image)
+                    <img src="{{ asset('storage/' . $animal->image) }}" alt="{{ $animal->name }}">
+                    @else
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" alt="No Image">
+                    @endif
 
-            <div class="pet-card">
-                <span class="tag">Adult</span>
-                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=1000&auto=format&fit=crop">
+                </div>
+
                 <div class="pet-info">
-                    <h3>Max</h3>
-                    <p>Male • 2 years • Border Collie</p>
+                    <h3>{{ $animal->name }}</h3>
+
+                    <div class="pet-details">
+                        <p><strong>Species:</strong> {{ $animal->species }}</p>
+                        <p><strong>Gender:</strong> {{ $animal->gender }}</p>
+                        <p><strong>Breed:</strong> {{ $animal->breed ?? 'Unknown' }}</p>
+                        <p><strong>Age:</strong> {{ $animal->age }}</p>
+                        <p><strong>Height:</strong> {{ $animal->height }} cm</p>
+                        <p><strong>Weight:</strong> {{ $animal->weight }} kg</p>
+                    </div>
+                    <p class="pet-description">{{($animal->description) }}</p>
+                    <a href="{{ route('login') }}" class="adopt-btn">Adopt Me</a>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 
@@ -194,10 +196,10 @@
 
             <div class="footer-contact" id="contact">
                 <h3>Contact Us</h3>
-                <p>📍 Test</p>
-                <p>📞 (123) 456-7890</p>
-                <p>✉ test@gmail.com</p>
-                <p>🕘 Mon - Sat: 9:00 AM - 6:00 PM</p>
+                <p> Test</p>
+                <p> (123) 456-7890</p>
+                <p> test@gmail.com</p>
+                <p> Mon - Sat: 9:00 AM - 6:00 PM</p>
             </div>
 
         </div>

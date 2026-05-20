@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('civil_status');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('owner_image')->nullable();
-            $table->date('zoom_interview_date');
+            $table->dateTime('zoom_interview_date');
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();
         });
