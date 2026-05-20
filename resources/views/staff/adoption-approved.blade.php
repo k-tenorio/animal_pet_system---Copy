@@ -199,6 +199,11 @@
             color: #7f1d1d;
         }
 
+        .status.paid {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
         .empty-box {
             padding: 35px;
             text-align: center;
@@ -238,7 +243,7 @@
             <div class="sidebar-menu">
                 <a href="{{ route('staff.animal') }}">Register Pet</a>
                 <a href="{{ route('staff.adoption-application') }}">Adoption Applications</a>
-                <a href="#">Kapon Appointments</a>
+                <a href="{{ route('staff.kapon-appointments') }}">Kapon Appointments</a>
                 <a href="{{ route('staff.adoption-approved') }}" class="active">Reviewed Applications</a>
             </div>
 
@@ -323,6 +328,61 @@
 
                                 <td>
                                     {{ $application->approvedBy->name ?? '—' }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @endif
+            </div>
+
+            <div class="table-card" style="margin-top: 30px;">
+                <h2 class="table-title">Paid & Rejected Kapon Appointments</h2>
+
+                @if($kaponAppointments->isEmpty())
+                <div class="empty-box">
+                    No reviewed kapon appointments found.
+                </div>
+                @else
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pet Image</th>
+                                <th>Pet Name</th>
+                                <th>Owner</th>
+                                <th>Procedure</th>
+                                <th>Appointment</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach($kaponAppointments as $appointment)
+                            <tr>
+                                <td>
+                                    @if($appointment->pet_photo)
+                                    <img src="{{ asset('storage/' . $appointment->pet_photo) }}" class="animal-img" alt="{{ $appointment->pet_name }}">
+                                    @else
+                                    <span style="color:#98a2b3; font-weight:bold;">No image</span>
+                                    @endif
+                                </td>
+
+                                <td>{{ $appointment->pet_name }}</td>
+
+                                <td>{{ $appointment->owner_name }}</td>
+
+                                <td>{{ $appointment->procedure_type ?? '-' }}</td>
+
+                                <td>
+                                    {{ $appointment->appointment_date ? $appointment->appointment_date->format('M d, Y H:i') : '-' }}
+                                </td>
+
+                                <td>
+                                    <span class="status {{ strtolower($appointment->status) }}">
+                                        {{ ucfirst($appointment->status) }}
+                                    </span>
                                 </td>
                             </tr>
                             @endforeach

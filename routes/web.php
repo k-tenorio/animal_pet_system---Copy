@@ -67,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/staff/adoption-approved', [AnimalAppointmentController::class, 'approved'])->name('staff.adoption-approved');
     Route::put('/staff/adoption/{application}/approve', [AnimalAppointmentController::class, 'approve'])->name('staff.adoption.approve');
     Route::put('/staff/adoption/{application}/reject', [AnimalAppointmentController::class, 'reject'])->name('staff.adoption.reject');
+    Route::get('/staff/kapon-appointments', [KaponController::class, 'staffIndex'])->name('staff.kapon-appointments');
+    Route::put('/staff/kapon/{kapon}/status', [KaponController::class, 'updateStatus'])->name('staff.kapon.status');
 });
 
 /* USER */

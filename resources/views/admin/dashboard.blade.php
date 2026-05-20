@@ -125,7 +125,7 @@
                 <a href="{{ route('dashboard') }}">Dashboard</a>
                 <div class="dropdown">
                     <button class="dropdown-btn" onclick="toggleUsersDropdown()">
-                        Users ▾
+                        Manage Users ▾
                     </button>
 
                     <div id="usersDropdown" class="dropdown-content">
@@ -133,11 +133,9 @@
                         <a href="{{ route('staff.index') }}">Manage Staff</a>
                     </div>
                 </div>
-                <a href="{{ route('admin.animal.index') }}">Animals</a>
-                <a href="#">Adoption Applications</a>
-                <a href="#">Adoptions</a>
-                <a href="#">Donations</a>
-                <a href="#">Kapon Appointments</a>
+                <a href="{{ route('admin.animal.index') }}">Manage Animals</a>
+                <a href="#">Manage Adoption Applications</a>
+                <a href="#">Manage Donation</a>
                 <a href="#">Reports</a>
             </div>
 

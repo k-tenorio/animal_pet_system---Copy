@@ -24,7 +24,11 @@ class AnimalAppointmentController extends Controller
             ->latest()
             ->get();
 
-        return view('staff.adoption-approved', compact('applications'));
+        $kaponAppointments = \App\Models\Kapon::whereIn('status', ['paid', 'rejected'])
+            ->latest()
+            ->get();
+
+        return view('staff.adoption-approved', compact('applications', 'kaponAppointments'));
     }
 
     public function approve(AdoptionApplication $application)

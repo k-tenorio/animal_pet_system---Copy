@@ -51,6 +51,28 @@ class KaponController extends Controller
         return redirect()->back()->with('success', 'Kapon appointment submitted.');
     }
 
+    public function staffIndex()
+    {
+        $appointments = Kapon::whereIn('status', ['pending', 'scheduled'])
+                             ->latest()
+                             ->get();
+
+        return view('staff.kapon-appointments', compact('appointments'));
+    }
+
+    public function updateStatus(Request $request, Kapon $kapon)
+    {
+        $validated = $request->validate([
+            'status' => 'required|string|in:pending,scheduled,paid,rejected',
+        ]);
+
+        $kapon->status = $validated['status'];
+        $kapon->save();
+
+        return redirect()->route('staff.kapon-appointments')
+            ->with('success', 'Kapon appointment status updated successfully.');
+    }
+
     public function cancel(Kapon $kapon)
     {
         if ($kapon->user_id !== Auth::id()) {

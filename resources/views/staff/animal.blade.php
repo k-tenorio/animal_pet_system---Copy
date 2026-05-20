@@ -350,7 +350,7 @@
             <div class="sidebar-menu">
                 <a href="{{ route('staff.animal') }}" class="active">Register Pet</a>
                 <a href="{{ route('staff.adoption-application') }}">Adoption Applications</a>
-                <a href="#">Kapon Appointments</a>
+                <a href="{{ route('staff.kapon-appointments') }}">Kapon Appointments</a>
                 <a href="{{ route('staff.adoption-approved') }}">Reviewed Applications</a>
             </div>
 

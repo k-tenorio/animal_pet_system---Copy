@@ -296,7 +296,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Image of Owner</label>
+                            <label>Image</label>
                             <input type="file" name="owner_image" accept="image/*">
                         </div>
 

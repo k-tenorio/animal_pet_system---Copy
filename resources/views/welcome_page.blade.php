@@ -197,9 +197,9 @@
             <div class="footer-contact" id="contact">
                 <h3>Contact Us</h3>
                 <p> Test</p>
-                <p> (123) 456-7890</p>
+                <p> 1234567890</p>
                 <p> test@gmail.com</p>
-                <p> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                <p> Mon - Sat: :00 AM - 5:00 PM</p>
             </div>
 
         </div>

@@ -293,18 +293,18 @@
                 <a href="{{ route('dashboard') }}">Dashboard</a>
 
                 <div class="dropdown">
-                    <button class="dropdown-btn" onclick="toggleUsersDropdown()">Users ▾</button>
+                    <button class="dropdown-btn" onclick="toggleUsersDropdown()">
+                        Manage Users ▾
+                    </button>
+
                     <div id="usersDropdown" class="dropdown-content">
                         <a href="#">Manage Adopters</a>
                         <a href="{{ route('staff.index') }}">Manage Staff</a>
                     </div>
                 </div>
-
-                <a href="{{ route('admin.animal.index') }}" class="active">Animals</a>
-                <a href="#">Adoption Applications</a>
-                <a href="#">Adoptions</a>
-                <a href="#">Donations</a>
-                <a href="#">Kapon Appointments</a>
+                <a href="{{ route('admin.animal.index') }}">Manage Animals</a>
+                <a href="#">Manage Adoption Applications</a>
+                <a href="#">Manage Donation</a>
                 <a href="#">Reports</a>
             </div>
 
@@ -417,102 +417,103 @@
                             </select>
                         </div>
 
-                    </div><
+                    </div>
+                    <
 
-                    <div class="filter-actions">
+                        <div class="filter-actions">
                         <button type="submit" class="add-btn">Apply Filters</button>
                         <a href="{{ route('admin.animal.index') }}" class="reset-btn">Reset</a>
-                    </div>
-
-                </form>
             </div>
 
-            <!-- ── ANIMAL LIST CARD ── -->
-            <div class="card">
-                <h2 style="margin-top:0;">Animal List</h2>
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Species</th>
-                                <th>Breed</th>
-                                <th>Gender</th>
-                                <th>Age</th>
-                                <th>Weight</th>
-                                <th>Height</th>
-                                <th>Status</th>
-                                <th>Date Added</th>
-                                <th>Registered By</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($animals as $animal)
-                            <tr>
-                                <td>
-                                    @if($animal->image)
-                                    <img src="{{ asset('storage/' . $animal->image) }}"
-                                        width="55" height="55"
-                                        style="border-radius:8px; object-fit:cover;">
-                                    @else
-                                    <span style="color:#aaa; font-size:12px;">No Image</span>
-                                    @endif
-                                </td>
-                                <td><strong>{{ $animal->name }}</strong></td>
-                                <td>{{ $animal->species }}</td>
-                                <td>{{ $animal->breed }}</td>
-                                <td>{{ $animal->gender ?? '—' }}</td>
-                                <td>{{ $animal->age }}</td>
-                                <td>{{ $animal->weight ? $animal->weight . ' kg' : '—' }}</td>
-                                <td>{{ $animal->height ? $animal->height . ' cm' : '—' }}</td>
-                                <td>
-                                    @php
-                                    $badgeClass = match(strtolower($animal->status ?? '')) {
-                                    'available' => 'badge-available',
-                                    'adopted' => 'badge-adopted',
-                                    'pending' => 'badge-pending',
-                                    default => '',
-                                    };
-                                    @endphp
-                                    <span class="badge {{ $badgeClass }}">{{ $animal->status }}</span>
-                                </td>
-                                <td>{{ $animal->created_at ? $animal->created_at->format('M d, Y') : '—' }}</td>
-                                <td>
-                                    {{-- Assumes animal belongs to a staff/user via registered_by foreign key --}}
-                                    {{ $animal->registeredBy?->name ?? '—' }}
-                                </td>
-                                <td style="white-space:nowrap;">
-                                    <a href="{{ route('admin.animal.edit', $animal->animal_id) }}" class="edit-btn">Edit</a>
+            </form>
+        </div>
 
-                                    <form method="POST"
-                                        action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
-                                        style="display:inline;"
-                                        onsubmit="return confirm('Are you sure you want to delete this animal?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete-btn">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="12" style="text-align:center; padding:30px; color:#888;">
-                                    No animals found.
-                                </td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+        <!-- ── ANIMAL LIST CARD ── -->
+        <div class="card">
+            <h2 style="margin-top:0;">Animal List</h2>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Species</th>
+                            <th>Breed</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Weight</th>
+                            <th>Height</th>
+                            <th>Status</th>
+                            <th>Date Added</th>
+                            <th>Registered By</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($animals as $animal)
+                        <tr>
+                            <td>
+                                @if($animal->image)
+                                <img src="{{ asset('storage/' . $animal->image) }}"
+                                    width="55" height="55"
+                                    style="border-radius:8px; object-fit:cover;">
+                                @else
+                                <span style="color:#aaa; font-size:12px;">No Image</span>
+                                @endif
+                            </td>
+                            <td><strong>{{ $animal->name }}</strong></td>
+                            <td>{{ $animal->species }}</td>
+                            <td>{{ $animal->breed }}</td>
+                            <td>{{ $animal->gender ?? '—' }}</td>
+                            <td>{{ $animal->age }}</td>
+                            <td>{{ $animal->weight ? $animal->weight . ' kg' : '—' }}</td>
+                            <td>{{ $animal->height ? $animal->height . ' cm' : '—' }}</td>
+                            <td>
+                                @php
+                                $badgeClass = match(strtolower($animal->status ?? '')) {
+                                'available' => 'badge-available',
+                                'adopted' => 'badge-adopted',
+                                'pending' => 'badge-pending',
+                                default => '',
+                                };
+                                @endphp
+                                <span class="badge {{ $badgeClass }}">{{ $animal->status }}</span>
+                            </td>
+                            <td>{{ $animal->created_at ? $animal->created_at->format('M d, Y') : '—' }}</td>
+                            <td>
+                                {{-- Assumes animal belongs to a staff/user via registered_by foreign key --}}
+                                {{ $animal->registeredBy?->name ?? '—' }}
+                            </td>
+                            <td style="white-space:nowrap;">
+                                <a href="{{ route('admin.animal.edit', $animal->animal_id) }}" class="edit-btn">Edit</a>
 
-                <div class="pagination-container">
-                    {{ $animals->appends(request()->query())->links() }}
-                </div>
+                                <form method="POST"
+                                    action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Are you sure you want to delete this animal?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="12" style="text-align:center; padding:30px; color:#888;">
+                                No animals found.
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
 
-        </div><!-- /.content -->
+            <div class="pagination-container">
+                {{ $animals->appends(request()->query())->links() }}
+            </div>
+        </div>
+
+    </div><!-- /.content -->
     </div><!-- /.dashboard -->
 
     <script>
