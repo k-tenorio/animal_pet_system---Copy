@@ -224,25 +224,7 @@
             color: #c0392b;
         }
 
-        .action-btn {
-            border: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-        }
 
-        .edit-btn {
-            background: #3498db;
-            color: white;
-        }
-
-        .delete-btn {
-            background: #e74c3c;
-            color: white;
-            margin-left: 5px;
-        }
 
         @media (max-width: 768px) {
             .dashboard {
@@ -384,7 +366,6 @@
                             <th>Height</th>
                             <th>Weight</th>
                             <th>Status</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -413,16 +394,6 @@
                                 </span>
                             </td>
 
-                            <td>
-                                <button class="action-btn edit-btn">Edit</button>
-
-                                <form method="POST" action="{{ route('staff.animal.destroy', $animal->animal_id) }}"
-                                    style="display:inline;"
-                                    onsubmit="return confirm('Delete this animal?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="action-btn delete-btn">Delete</button>
-                                </form>
                             </td>
                         </tr>
                         @endforeach

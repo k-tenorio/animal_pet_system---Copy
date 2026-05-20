@@ -32,13 +32,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/staff/{id}', [UserController::class, 'update'])->name('staff.update');
     Route::delete('/admin/staff/{id}', [UserController::class, 'destroy'])->name('staff.destroy');
     Route::patch('/admin/staff/{id}/toggle', [UserController::class, 'toggleStatus'])->name('staff.toggle');
+    
+    // Admin Animal Routes
+    Route::get('/admin/animal', [\App\Http\Controllers\AdminAnimalController::class, 'index'])->name('admin.animal.index');
+    Route::get('/admin/animal/{id}/edit', [\App\Http\Controllers\AdminAnimalController::class, 'edit'])->name('admin.animal.edit');
+    Route::put('/admin/animal/{id}', [\App\Http\Controllers\AdminAnimalController::class, 'update'])->name('admin.animal.update');
+    Route::delete('/admin/animal/{id}', [\App\Http\Controllers\AdminAnimalController::class, 'destroy'])->name('admin.animal.destroy');
 });
 
 Route::middleware(['auth'])->prefix('staff')->name('staff.')->group(function () {
     Route::get('/animal', [AnimalController::class, 'index'])->name('animal');
     Route::post('/animal', [AnimalController::class, 'store'])->name('animal.store');
-    Route::put('/animal/{id}', [AnimalController::class, 'update'])->name('animal.update');
-    Route::delete('/animal/{id}', [AnimalController::class, 'destroy'])->name('animal.destroy');
 });
 
 Route::post('/donation', [DonationController::class, 'store'])->name('donation.store');

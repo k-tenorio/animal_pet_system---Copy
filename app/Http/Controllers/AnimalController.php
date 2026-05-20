@@ -38,33 +38,4 @@ class AnimalController extends Controller
             ->with('success', 'Animal added successfully.');
     }
 
-    public function update(Request $request, $animal_id)
-    {
-        $animal = Animal::findOrFail($animal_id);
-
-        $animal->name = $request->name;
-        $animal->species = $request->species;
-        $animal->gender = $request->gender;
-        $animal->breed = $request->breed;
-        $animal->age = $request->age;
-        $animal->status = $request->status;
-        $animal->height = $request->height;
-        $animal->weight = $request->weight;
-        $animal->description = $request->description;
-
-        if ($request->hasFile('image')) {
-            $animal->image = $request->file('image')->store('animals', 'public');
-        }
-
-        $animal->save();
-
-        return redirect()->route('staff.animal')->with('success', 'Animal updated successfully.');
-    }
-
-    public function destroy($animal_id)
-    {
-        $animal = Animal::findOrFail($animal_id);
-        $animal->delete();
-        return redirect()->route('staff.animal')->with('success', 'Animal deleted successfully.');
-    }
 }

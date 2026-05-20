@@ -133,7 +133,7 @@
                         <a href="{{ route('staff.index') }}">Manage Staff</a>
                     </div>
                 </div>
-                <a href="#">Animals</a>
+                <a href="{{ route('admin.animal.index') }}">Animals</a>
                 <a href="#">Adoption Applications</a>
                 <a href="#">Adoptions</a>
                 <a href="#">Donations</a>
