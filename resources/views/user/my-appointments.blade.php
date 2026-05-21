@@ -204,6 +204,10 @@
             background: #10b981;
         }
 
+        .status-adopted {
+            background: #15803d;
+        }
+
         .status-completed {
             background: #2563eb;
         }
@@ -334,8 +338,12 @@
                                 </td>
 
                                 <td>
-                                    <span class="status-pill status-{{ strtolower($application->status) }}">
-                                        {{ $application->status }}
+                                    @php
+                                    $displayStatus = $application->status == 'Approved' ? 'Adopted' : $application->status;
+                                    @endphp
+
+                                    <span class="status-pill status-{{ strtolower($displayStatus) }}">
+                                        {{ $displayStatus }}
                                     </span>
                                 </td>
 

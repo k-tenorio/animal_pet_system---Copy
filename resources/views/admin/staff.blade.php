@@ -352,23 +352,21 @@
             <h2>PawMily Home</h2>
 
             <div class="sidebar-menu">
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a>
 
                 <div class="dropdown">
                     <button class="dropdown-btn" onclick="toggleUsersDropdown()">
-                        Manage Users
+                        Manage Users ▾
                     </button>
 
                     <div id="usersDropdown" class="dropdown-content show">
-                        <a href="#">Manage Adopters</a>
                         <a href="{{ route('staff.index') }}" class="active">Manage Staff</a>
                     </div>
                 </div>
 
                 <a href="{{ route('admin.animal.index') }}">Manage Animals</a>
-                <a href="#">Manage Adoption Applications</a>
-                <a href="#">Manage Donation</a>
-                <a href="#">Reports</a>
+                <a href="{{ route('admin.adoption.applications') }}">Manage Adoption Applications</a>
+                
             </div>
 
             <form method="POST" action="{{ route('logout') }}" class="logout-form">

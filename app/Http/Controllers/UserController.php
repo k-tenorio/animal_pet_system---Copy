@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        $totalStaff = User::where('role', 'staff')->count();
+        $activeStaff = User::where('role', 'staff')->where('is_active', true)->count();
+        $totalUsers = User::where('role', 'user')->count();
+
+        return view('admin.dashboard', compact('totalStaff', 'activeStaff', 'totalUsers'));
+    }
+
     public function index(Request $request)
     {
         $search = $request->search;

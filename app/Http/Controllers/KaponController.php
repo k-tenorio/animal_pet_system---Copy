@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kapon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KaponController extends Controller
 {
@@ -53,9 +54,7 @@ class KaponController extends Controller
 
     public function staffIndex()
     {
-        $appointments = Kapon::whereIn('status', ['pending', 'scheduled'])
-                             ->latest()
-                             ->get();
+        $appointments = collect(DB::select('CALL GetKaponAppointmentsWithFee()'));
 
         return view('staff.kapon-appointments', compact('appointments'));
     }

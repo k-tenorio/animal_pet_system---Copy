@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('owner_image')->nullable();
             $table->dateTime('zoom_interview_date');
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
+            $table->decimal('adoption_fee', 8, 2)->default(0);
+            $table->enum('payment_status', ['Unpaid', 'Paid'])->default('Unpaid');
             $table->timestamps();
         });
     }

@@ -9,7 +9,10 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\AnimalAppointmentController;
 use App\Http\Controllers\AdoptionApplicationController;
 use App\Http\Controllers\KaponController;
-use App\Models\User;
+use App\Http\Controllers\AdminAdoptionController;;
+
+use App\Http\Controllers\AdminDashboardController;
+
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/logout', function () {
@@ -26,8 +29,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function (Illuminate\Http\Request $request) {
+
     if ($request->user()->role === 'admin') {
-        return view('admin.dashboard');
+        return redirect()->route('admin.dashboard');
     } elseif ($request->user()->role === 'staff') {
         return redirect()->route('staff.animal');
     } elseif ($request->user()->role === 'user') {
@@ -45,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
 /* ADMIN */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [UserController::class, 'index'])->name('admin.index');
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/staff', [UserController::class, 'index'])->name('staff.index');
     Route::post('/admin/staff', [UserController::class, 'store'])->name('staff.store');
     Route::put('/admin/staff/{id}', [UserController::class, 'update'])->name('staff.update');
@@ -57,6 +61,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/animal/{id}/edit', [\App\Http\Controllers\AdminAnimalController::class, 'edit'])->name('admin.animal.edit');
     Route::put('/admin/animal/{id}', [\App\Http\Controllers\AdminAnimalController::class, 'update'])->name('admin.animal.update');
     Route::delete('/admin/animal/{id}', [\App\Http\Controllers\AdminAnimalController::class, 'destroy'])->name('admin.animal.destroy');
+
+    // Admin Manage Adoption Application
+    Route::get('/admin/adoption-applications', [AdminAdoptionController::class, 'index'])->name('admin.adoption.applications');
+    Route::put('/admin/adoption-applications/{id}/approve', [AdminAdoptionController::class, 'approve'])->name('admin.adoption.approve');
+    Route::put('/admin/adoption-applications/{id}/reject', [AdminAdoptionController::class, 'reject'])->name('admin.adoption.reject');
+
+    Route::put('/admin/adoption-applications/{id}/paid', [AdminAdoptionController::class, 'markAsPaid'])->name('admin.adoption.paid');
 });
 
 /* STAFF */
@@ -80,7 +91,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/adoption/{application}', [AdoptionApplicationController::class, 'cancel'])->name('adoption.cancel');
 
     Route::get('/user/my-appointments', [AdoptionApplicationController::class, 'myAppointments'])->name('user.my-appointments');
-    
+
     Route::get('/user/donation', [DonationController::class, 'create'])->name('user.donation');
 
     Route::get('/user/kapon', [KaponController::class, 'create'])->name('user.kapon.create');

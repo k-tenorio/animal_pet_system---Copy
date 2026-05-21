@@ -449,15 +449,6 @@
 
                         <tbody>
                             @foreach($appointments as $appointment)
-                            @php
-                            $fee = null;
-
-                            if (strtolower($appointment->pet_gender) === 'male') {
-                            $fee = 700;
-                            } elseif (strtolower($appointment->pet_gender) === 'female') {
-                            $fee = 1000;
-                            }
-                            @endphp
 
                             <tr>
                                 <td>
@@ -486,7 +477,7 @@
 
                                 <td>
                                     <div class="action-buttons">
-                                        <button type="button" class="view-btn" data-appointment="{{ json_encode($appointment) }}" data-fee="{{ $fee }}" onclick="openModal(this)">View</button>
+                                        <button type="button" class="view-btn" data-appointment="{{ json_encode($appointment) }}" data-fee="{{ $appointment->kapon_fee }}" onclick="openModal(this)"> View </button>
                                     </div>
                                 </td>
                             </tr>

@@ -20,7 +20,7 @@ class AnimalAppointmentController extends Controller
     public function approved()
     {
         $applications = AdoptionApplication::with('animal')
-            ->whereIn('status', ['Approved', 'Rejected'])
+            ->whereIn('status', ['Staff Approved', 'Rejected'])
             ->latest()
             ->get();
 
@@ -33,12 +33,12 @@ class AnimalAppointmentController extends Controller
 
     public function approve(AdoptionApplication $application)
     {
-        $application->status = 'Approved';
-        $application->approved_by = Auth::id();
+        $application->status = 'Staff Approved';
+        $application->registered_by = Auth::id();
         $application->save();
 
         return redirect()->route('staff.adoption-application')
-            ->with('success', 'Application approved successfully.');
+            ->with('success', 'Application reviewed by staff. Waiting for admin final approval.');
     }
 
     public function reject(AdoptionApplication $application)

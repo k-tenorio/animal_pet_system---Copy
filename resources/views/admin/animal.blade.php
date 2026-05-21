@@ -3,7 +3,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f7f5;
+            background: #f1f6f2;
         }
 
         .dashboard {
@@ -11,71 +11,78 @@
             min-height: 100vh;
         }
 
-        /* ── Sidebar ── */
         .sidebar {
-            width: 250px;
-            background: #1f4d36;
+            width: 270px;
+            background: #173b2a;
             color: white;
-            padding: 25px 20px;
+            padding: 30px 22px;
             display: flex;
             flex-direction: column;
+            box-shadow: 8px 0 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .logo-container img {
+            width: 92px;
+            height: 92px;
+            object-fit: cover;
+            border-radius: 28px;
+            background: white;
+            padding: 6px;
+            border: 4px solid rgba(255, 255, 255, 0.18);
         }
 
         .sidebar h2 {
-            font-size: 24px;
-            margin-bottom: 30px;
             text-align: center;
+            font-size: 27px;
+            margin-bottom: 40px;
+            letter-spacing: .5px;
         }
 
         .sidebar-menu {
             flex: 1;
         }
 
-        .sidebar a {
+        .sidebar a,
+        .dropdown-btn {
             display: block;
-            color: white;
+            width: 100%;
+            color: #eaf6ee;
             text-decoration: none;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            padding: 15px 18px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            font-weight: bold;
             transition: 0.2s;
+            background: transparent;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 15px;
         }
 
         .sidebar a:hover,
-        .sidebar a.active {
-            background: #2f6b4d;
-        }
-
-        .dropdown-btn {
-            width: 100%;
-            background: none;
-            border: none;
-            color: white;
-            text-align: left;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
+        .sidebar a.active,
         .dropdown-btn:hover {
-            background: #2f6b4d;
+            background: #3b7a57;
+            transform: translateX(4px);
         }
 
         .dropdown-content {
             display: none;
-            margin-left: 15px;
+            margin-left: 14px;
+            margin-bottom: 10px;
         }
 
         .dropdown-content a {
             font-size: 14px;
-            padding: 10px 15px;
-            background: #2a5c43;
-        }
-
-        .dropdown-content a:hover {
-            background: #3b7a59;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .dropdown-content.show {
@@ -87,79 +94,114 @@
         }
 
         .logout-btn {
-            background: #c0392b;
-            border: none;
-            color: white;
-            padding: 12px 15px;
             width: 100%;
-            text-align: left;
+            border: none;
+            background: #b8322a;
+            color: white;
+            padding: 14px;
+            border-radius: 14px;
             cursor: pointer;
-            font-size: 16px;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
-
-        .logout-btn:hover {
-            background: #e74c3c;
-        }
-
-        /* ── Content ── */
-        .content {
-            flex: 1;
-            padding: 30px;
-        }
-
-        .content h1 {
-            margin-bottom: 20px;
-            font-size: 30px;
             font-weight: bold;
         }
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .logout-btn:hover {
+            background: #92261f;
         }
 
-        /* ── Filter grid ── */
+        .content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .message {
+            background: #dff7e7;
+            color: #1f4d36;
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .page-header {
+            background: white;
+            padding: 28px 32px;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            margin-bottom: 28px;
+            border-left: 8px solid #1f4d36;
+        }
+
+        .page-header h1 {
+            color: #1f4d36;
+            font-size: 34px;
+            margin: 0 0 8px;
+        }
+
+        .page-header p {
+            color: #667085;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .filter-card,
+        .table-card {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+
+        .card-title {
+            color: #1f4d36;
+            margin: 0;
+            padding: 24px 28px;
+            font-size: 23px;
+            border-bottom: 1px solid #e7eee9;
+            background: #fbfdfb;
+        }
+
+        .filter-body {
+            padding: 26px 28px;
+        }
+
         .filter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-            margin-bottom: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 7px;
         }
 
         .filter-group label {
             font-size: 12px;
-            font-weight: 600;
-            color: #555;
+            font-weight: bold;
+            color: #1f4d36;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
         }
 
         .filter-group input,
         .filter-group select {
-            padding: 9px 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            padding: 12px 14px;
+            border: 1px solid #d8e3dc;
+            border-radius: 12px;
             font-size: 14px;
             width: 100%;
             box-sizing: border-box;
-            margin: 0;
+            background: #fbfdfb;
         }
 
         .filter-group input:focus,
         .filter-group select:focus {
             outline: none;
             border-color: #1f4d36;
+            background: white;
         }
 
         .filter-search-row {
@@ -169,128 +211,190 @@
         .filter-actions {
             display: flex;
             gap: 10px;
-            align-items: center;
             flex-wrap: wrap;
         }
 
-        /* ── Buttons ── */
-        input,
-        select {
-            padding: 10px;
-            margin: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        button {
-            padding: 10px 15px;
+        .apply-btn,
+        .reset-btn {
             border: none;
-            border-radius: 6px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
             cursor: pointer;
         }
 
-        .add-btn {
+        .apply-btn {
             background: #1f4d36;
             color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #2f6b4d;
         }
 
         .reset-btn {
-            background: #7f8c8d;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
+            background: #eef3ef;
+            color: #1f4d36;
+        }
+
+        .reset-btn:hover {
+            background: #dce9df;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+        }
+
+        table th {
+            background: #f5faf6;
+            color: #1f4d36;
+            padding: 16px 18px;
+            text-align: left;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            border-bottom: 1px solid #edf1ee;
+        }
+
+        table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #edf1ee;
+            color: #344054;
+            vertical-align: middle;
             font-size: 14px;
+        }
+
+        table tr:hover td {
+            background: #f9fcfa;
+        }
+
+        .animal-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid #e5e7eb;
+        }
+
+        .no-image {
+            color: #98a2b3;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .badge-available {
+            background: #dff7e7;
+            color: #1f4d36;
+        }
+
+        .badge-adopted {
+            background: #dbeafe;
+            color: #1e3a8a;
+        }
+
+        .badge-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            border: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
             text-decoration: none;
             display: inline-block;
         }
 
         .edit-btn {
-            background: #2980b9;
+            background: #1f4d36;
             color: white;
-            text-decoration: none;
-            display: inline-block;
-            padding: 7px 11px;
-            border-radius: 4px;
-            font-size: 13px;
+        }
+
+        .edit-btn:hover {
+            background: #2f6b4d;
         }
 
         .delete-btn {
-            background: #c0392b;
+            background: #b8322a;
             color: white;
-            padding: 7px 11px;
-            border-radius: 4px;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
         }
 
-        /* ── Table ── */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
+        .delete-btn:hover {
+            background: #92261f;
         }
 
-        th,
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        th {
-            background: #1f4d36;
-            color: white;
-            white-space: nowrap;
-        }
-
-        td {
-            font-size: 14px;
-        }
-
-        /* Status badge */
-        .badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge-available {
-            background: #d4f5dd;
-            color: #1a6b35;
-        }
-
-        .badge-adopted {
-            background: #d0e8ff;
-            color: #1a4b8c;
-        }
-
-        .badge-pending {
-            background: #fff3cd;
-            color: #7d5a00;
+        .empty-box {
+            padding: 35px;
+            text-align: center;
+            color: #667085;
+            font-weight: bold;
         }
 
         .pagination-container {
-            margin-top: 20px;
+            padding: 20px 28px;
+            background: #fbfdfb;
+            border-top: 1px solid #e7eee9;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: auto;
+            }
+
+            .content {
+                padding: 22px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
         }
     </style>
 
     <div class="dashboard">
 
-        <!-- SIDEBAR -->
         <div class="sidebar">
+
+            <div class="logo-container">
+                <img src="{{ asset('images/Pawmily_Home_Logo.png') }}" alt="PawMily Logo">
+            </div>
+
             <h2>PawMily Home</h2>
 
             <div class="sidebar-menu">
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a>
 
                 <div class="dropdown">
                     <button class="dropdown-btn" onclick="toggleUsersDropdown()">
@@ -298,14 +402,13 @@
                     </button>
 
                     <div id="usersDropdown" class="dropdown-content">
-                        <a href="#">Manage Adopters</a>
                         <a href="{{ route('staff.index') }}">Manage Staff</a>
                     </div>
                 </div>
-                <a href="{{ route('admin.animal.index') }}">Manage Animals</a>
-                <a href="#">Manage Adoption Applications</a>
-                <a href="#">Manage Donation</a>
-                <a href="#">Reports</a>
+
+                <a href="{{ route('admin.animal.index') }}" class="active">Manage Animals</a>
+                <a href="{{ route('admin.adoption.applications') }}">Manage Adoption Applications</a>
+
             </div>
 
             <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -314,207 +417,211 @@
             </form>
         </div>
 
-        <!-- MAIN CONTENT -->
         <div class="content">
-            <h1>Manage Animals</h1>
 
             @if(session('success'))
-            <p style="color:green; background:#d4f5dd; padding:10px; border-radius:5px;">
+            <div class="message">
                 {{ session('success') }}
-            </p>
+            </div>
             @endif
 
-            <!-- ── FILTER CARD ── -->
-            <div class="card">
-                <h2 style="margin-top:0; margin-bottom:16px;">Search & Filter</h2>
+            <div class="page-header">
+                <h1>Manage Animals</h1>
+                <p>View, search, filter, edit, and delete animal records.</p>
+            </div>
 
-                <form method="GET" action="{{ route('admin.animal.index') }}">
+            <div class="filter-card">
+                <h2 class="card-title">Search & Filter</h2>
 
-                    <div class="filter-grid">
+                <div class="filter-body">
+                    <form method="GET" action="{{ route('admin.animal.index') }}">
 
-                        <!-- Search (full width) -->
-                        <div class="filter-group filter-search-row">
-                            <label>Search</label>
-                            <input type="text"
-                                name="search"
-                                placeholder="Search name, breed…"
-                                value="{{ request('search') }}">
+                        <div class="filter-grid">
+
+                            <div class="filter-group filter-search-row">
+                                <label>Search</label>
+                                <input type="text"
+                                    name="search"
+                                    placeholder="Search name or breed"
+                                    value="{{ request('search') }}">
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Species</label>
+                                <select name="species">
+                                    <option value="">All Species</option>
+                                    <option value="Dog" {{ request('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
+                                    <option value="Cat" {{ request('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Gender</label>
+                                <select name="gender">
+                                    <option value="">All Genders</option>
+                                    <option value="Male" {{ request('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ request('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Status</label>
+                                <select name="status">
+                                    <option value="">All Statuses</option>
+                                    <option value="Available" {{ request('status') == 'Available' ? 'selected' : '' }}>Available</option>
+                                    <option value="Adopted" {{ request('status') == 'Adopted' ? 'selected' : '' }}>Adopted</option>
+                                    <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Age Group</label>
+                                <select name="age_group">
+                                    <option value="">All Ages</option>
+                                    <option value="Puppy/Kitten" {{ request('age_group') == 'Puppy/Kitten' ? 'selected' : '' }}>Puppy / Kitten</option>
+                                    <option value="Adult" {{ request('age_group') == 'Adult' ? 'selected' : '' }}>Adult</option>
+                                    <option value="Senior" {{ request('age_group') == 'Senior' ? 'selected' : '' }}>Senior</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Date Added From</label>
+                                <input type="date" name="date_from" value="{{ request('date_from') }}">
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Date Added To</label>
+                                <input type="date" name="date_to" value="{{ request('date_to') }}">
+                            </div>
+
+                            <div class="filter-group">
+                                <label>Sort By</label>
+                                <select name="sort">
+                                    <option value="">Sort by</option>
+                                    <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>Name A-Z</option>
+                                    <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Name Z-A</option>
+                                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest First</option>
+                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
+                                    <option value="age_asc" {{ request('sort') == 'age_asc' ? 'selected' : '' }}>Age Low to High</option>
+                                    <option value="age_desc" {{ request('sort') == 'age_desc' ? 'selected' : '' }}>Age High to Low</option>
+                                    <option value="weight_asc" {{ request('sort') == 'weight_asc' ? 'selected' : '' }}>Weight Low to High</option>
+                                    <option value="weight_desc" {{ request('sort') == 'weight_desc' ? 'selected' : '' }}>Weight High to Low</option>
+                                    <option value="height_asc" {{ request('sort') == 'height_asc' ? 'selected' : '' }}>Height Low to High</option>
+                                    <option value="height_desc" {{ request('sort') == 'height_desc' ? 'selected' : '' }}>Height High to Low</option>
+                                </select>
+                            </div>
+
                         </div>
-
-                        <!-- Species -->
-                        <div class="filter-group">
-                            <label>Species</label>
-                            <select name="species">
-                                <option value="">All Species</option>
-                                <option value="Dog" {{ request('species') == 'Dog'  ? 'selected' : '' }}>Dog</option>
-                                <option value="Cat" {{ request('species') == 'Cat'  ? 'selected' : '' }}>Cat</option>
-                            </select>
-                        </div>
-
-                        <!-- Gender -->
-                        <div class="filter-group">
-                            <label>Gender</label>
-                            <select name="gender">
-                                <option value="">All Genders</option>
-                                <option value="Male" {{ request('gender') == 'Male'   ? 'selected' : '' }}>Male</option>
-                                <option value="Female" {{ request('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                            </select>
-                        </div>
-
-                        <!-- Status -->
-                        <div class="filter-group">
-                            <label>Status</label>
-                            <select name="status">
-                                <option value="">All Statuses</option>
-                                <option value="Available" {{ request('status') == 'Available' ? 'selected' : '' }}>Available</option>
-                                <option value="Adopted" {{ request('status') == 'Adopted'   ? 'selected' : '' }}>Adopted</option>
-                                <option value="Pending" {{ request('status') == 'Pending'   ? 'selected' : '' }}>Pending</option>
-                            </select>
-                        </div>
-
-                        <!-- Age Group -->
-                        <div class="filter-group">
-                            <label>Age Group</label>
-                            <select name="age_group">
-                                <option value="">All Ages</option>
-                                <option value="Puppy/Kitten" {{ request('age_group') == 'Puppy/Kitten' ? 'selected' : '' }}>Puppy / Kitten</option>
-                                <option value="Adult" {{ request('age_group') == 'Adult'        ? 'selected' : '' }}>Adult</option>
-                                <option value="Senior" {{ request('age_group') == 'Senior'       ? 'selected' : '' }}>Senior</option>
-                            </select>
-                        </div>
-
-                        <!-- Date Added (from) -->
-                        <div class="filter-group">
-                            <label>Date Added (From)</label>
-                            <input type="date"
-                                name="date_from"
-                                value="{{ request('date_from') }}">
-                        </div>
-
-                        <!-- Date Added (to) -->
-                        <div class="filter-group">
-                            <label>Date Added (To)</label>
-                            <input type="date"
-                                name="date_to"
-                                value="{{ request('date_to') }}">
-                        </div>
-
-                        <!-- Sort By -->
-                        <div class="filter-group">
-                            <label>Sort By</label>
-                            <select name="sort">
-                                <option value="">Sort by…</option>
-                                <option value="name_asc" {{ request('sort') == 'name_asc'    ? 'selected' : '' }}>Name (A–Z)</option>
-                                <option value="name_desc" {{ request('sort') == 'name_desc'   ? 'selected' : '' }}>Name (Z–A)</option>
-                                <option value="newest" {{ request('sort') == 'newest'      ? 'selected' : '' }}>Newest First</option>
-                                <option value="oldest" {{ request('sort') == 'oldest'      ? 'selected' : '' }}>Oldest First</option>
-                                <option value="age_asc" {{ request('sort') == 'age_asc'     ? 'selected' : '' }}>Age (Low → High)</option>
-                                <option value="age_desc" {{ request('sort') == 'age_desc'    ? 'selected' : '' }}>Age (High → Low)</option>
-                                <option value="weight_asc" {{ request('sort') == 'weight_asc'  ? 'selected' : '' }}>Weight (Low → High)</option>
-                                <option value="weight_desc" {{ request('sort') == 'weight_desc' ? 'selected' : '' }}>Weight (High → Low)</option>
-                                <option value="height_asc" {{ request('sort') == 'height_asc'  ? 'selected' : '' }}>Height (Low → High)</option>
-                                <option value="height_desc" {{ request('sort') == 'height_desc' ? 'selected' : '' }}>Height (High → Low)</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <
 
                         <div class="filter-actions">
-                        <button type="submit" class="add-btn">Apply Filters</button>
-                        <a href="{{ route('admin.animal.index') }}" class="reset-btn">Reset</a>
+                            <button type="submit" class="apply-btn">Apply Filters</button>
+                            <a href="{{ route('admin.animal.index') }}" class="reset-btn">Reset</a>
+                        </div>
+
+                    </form>
+                </div>
             </div>
 
-            </form>
+            <div class="table-card">
+                <h2 class="card-title">Animal List</h2>
+
+                @if($animals->isEmpty())
+                <div class="empty-box">
+                    No animals found.
+                </div>
+                @else
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>Breed</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Weight</th>
+                                <th>Height</th>
+                                <th>Status</th>
+                                <th>Date Added</th>
+                                <th>Registered By</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach($animals as $animal)
+                            <tr>
+                                <td>
+                                    @if($animal->image)
+                                    <img src="{{ asset('storage/' . $animal->image) }}"
+                                        class="animal-img"
+                                        alt="{{ $animal->name }}">
+                                    @else
+                                    <span class="no-image">No image</span>
+                                    @endif
+                                </td>
+
+                                <td><strong>{{ $animal->name }}</strong></td>
+                                <td>{{ $animal->species }}</td>
+                                <td>{{ $animal->breed }}</td>
+                                <td>{{ $animal->gender ?? '—' }}</td>
+                                <td>{{ $animal->age }}</td>
+                                <td>{{ $animal->weight ? $animal->weight . ' kg' : '—' }}</td>
+                                <td>{{ $animal->height ? $animal->height . ' cm' : '—' }}</td>
+
+                                <td>
+                                    @php
+                                    $badgeClass = match(strtolower($animal->status ?? '')) {
+                                    'available' => 'badge-available',
+                                    'adopted' => 'badge-adopted',
+                                    'pending' => 'badge-pending',
+                                    default => '',
+                                    };
+                                    @endphp
+
+                                    <span class="badge {{ $badgeClass }}">
+                                        {{ $animal->status }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    {{ $animal->created_at ? $animal->created_at->format('M d, Y') : '—' }}
+                                </td>
+
+                                <td>
+                                    {{ $animal->registeredBy?->name ?? '—' }}
+                                </td>
+
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="{{ route('admin.animal.edit', $animal->animal_id) }}" class="edit-btn">
+                                            Edit
+                                        </a>
+
+                                        <form method="POST"
+                                            action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
+                                            onsubmit="return confirm('Are you sure you want to delete this animal?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="delete-btn">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-container">
+                    {{ $animals->appends(request()->query())->links() }}
+                </div>
+                @endif
+            </div>
+
         </div>
-
-        <!-- ── ANIMAL LIST CARD ── -->
-        <div class="card">
-            <h2 style="margin-top:0;">Animal List</h2>
-            <div style="overflow-x:auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Species</th>
-                            <th>Breed</th>
-                            <th>Gender</th>
-                            <th>Age</th>
-                            <th>Weight</th>
-                            <th>Height</th>
-                            <th>Status</th>
-                            <th>Date Added</th>
-                            <th>Registered By</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($animals as $animal)
-                        <tr>
-                            <td>
-                                @if($animal->image)
-                                <img src="{{ asset('storage/' . $animal->image) }}"
-                                    width="55" height="55"
-                                    style="border-radius:8px; object-fit:cover;">
-                                @else
-                                <span style="color:#aaa; font-size:12px;">No Image</span>
-                                @endif
-                            </td>
-                            <td><strong>{{ $animal->name }}</strong></td>
-                            <td>{{ $animal->species }}</td>
-                            <td>{{ $animal->breed }}</td>
-                            <td>{{ $animal->gender ?? '—' }}</td>
-                            <td>{{ $animal->age }}</td>
-                            <td>{{ $animal->weight ? $animal->weight . ' kg' : '—' }}</td>
-                            <td>{{ $animal->height ? $animal->height . ' cm' : '—' }}</td>
-                            <td>
-                                @php
-                                $badgeClass = match(strtolower($animal->status ?? '')) {
-                                'available' => 'badge-available',
-                                'adopted' => 'badge-adopted',
-                                'pending' => 'badge-pending',
-                                default => '',
-                                };
-                                @endphp
-                                <span class="badge {{ $badgeClass }}">{{ $animal->status }}</span>
-                            </td>
-                            <td>{{ $animal->created_at ? $animal->created_at->format('M d, Y') : '—' }}</td>
-                            <td>
-                                {{-- Assumes animal belongs to a staff/user via registered_by foreign key --}}
-                                {{ $animal->registeredBy?->name ?? '—' }}
-                            </td>
-                            <td style="white-space:nowrap;">
-                                <a href="{{ route('admin.animal.edit', $animal->animal_id) }}" class="edit-btn">Edit</a>
-
-                                <form method="POST"
-                                    action="{{ route('admin.animal.destroy', $animal->animal_id) }}"
-                                    style="display:inline;"
-                                    onsubmit="return confirm('Are you sure you want to delete this animal?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="delete-btn">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="12" style="text-align:center; padding:30px; color:#888;">
-                                No animals found.
-                            </td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="pagination-container">
-                {{ $animals->appends(request()->query())->links() }}
-            </div>
-        </div>
-
-    </div><!-- /.content -->
-    </div><!-- /.dashboard -->
+    </div>
 
     <script>
         function toggleUsersDropdown() {
