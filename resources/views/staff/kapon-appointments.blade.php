@@ -466,7 +466,7 @@
                                 <td>{{ $appointment->procedure_type ?? '-' }}</td>
 
                                 <td>
-                                    {{ $appointment->appointment_date ? $appointment->appointment_date->format('M d, Y H:i') : '-' }}
+                                    {{ $appointment->appointment_date ? \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y h:i A') : '-' }}
                                 </td>
 
                                 <td>

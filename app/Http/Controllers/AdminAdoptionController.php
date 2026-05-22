@@ -22,6 +22,7 @@ class AdminAdoptionController extends Controller
     public function approve($id)
     {
         try {
+            
             DB::transaction(function () use ($id) {
 
                 $application = AdoptionApplication::findOrFail($id);

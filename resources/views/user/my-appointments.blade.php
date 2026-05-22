@@ -216,6 +216,10 @@
             background: #ef4444;
         }
 
+        .status-staff-approved {
+            background: #10b981;
+        }
+
         .cancel-btn {
             padding: 10px 16px;
             background: #c0392b;
@@ -340,9 +344,10 @@
                                 <td>
                                     @php
                                     $displayStatus = $application->status == 'Approved' ? 'Adopted' : $application->status;
+                                    $statusClass = strtolower(str_replace(' ', '-', $displayStatus));
                                     @endphp
 
-                                    <span class="status-pill status-{{ strtolower($displayStatus) }}">
+                                    <span class="status-pill status-{{ $statusClass }}">
                                         {{ $displayStatus }}
                                     </span>
                                 </td>

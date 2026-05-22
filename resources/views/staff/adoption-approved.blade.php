@@ -321,7 +321,11 @@
                                 </td>
 
                                 <td>
-                                    <span class="status {{ strtolower($application->status) }}">
+                                    @php
+                                    $statusClass = strtolower(str_replace(' ', '-', $application->status));
+                                    @endphp
+
+                                    <span class="status {{ $statusClass }}">
                                         {{ $application->status }}
                                     </span>
                                 </td>

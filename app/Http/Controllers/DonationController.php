@@ -47,7 +47,7 @@ class DonationController extends Controller
             'donor_contact_number' => $request->donor_contact_number,
             'amount' => $request->amount,
             'payment_method' => $request->payment_method,
-            'status' => 'Approved',
+            'status' => 'Completed',
         ]);
 
         return redirect()->back()->with('success', 'Thank you for your donation!');
